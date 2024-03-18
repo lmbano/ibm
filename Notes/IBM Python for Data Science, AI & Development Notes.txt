@@ -1,0 +1,1462 @@
+import sys
+
+print(sys.version)
+type() # function to tell u the type of a variable
+type(12)
+sys.float_infor # to get the largest and smallest number tht can be represented with them
+
+type(float(2))
+
+converst string 
+int('1') # prints 1 
+
+int('1 or 2 peole') # prints an error
+
+float('1.2') # converting a sting to float
+ str(1) # convert int to string 
+type(True) # prints bool
+int(True)# convert 1 to boolean
+type(6/2) # float
+type(6//2) int
+
+
+string 
+len("string")
+
+slicing 
+----------
+
+name[0:4] name[8:120]
+
+stride
+------
+
+name[::2] # stride of 2 every 2nd element
+
+name[0:5:2]
+
+
+multiply strings
+--------------
+
+3* "willo willo willo !"
+
+
+print(" i love this coding\ " \" part")
+
+print(r" i love this coding\ " \" part")
+
+
+name.find("test")
+
+name.split()
+
+
+import re
+
+s1 ="this is my string"
+
+#define the pattern to search for 
+
+pattern = r"is my"
+
+
+#use search() function to search for the pattern in the string 
+
+result = re.search(pattern,s1)
+
+
+# chech if a match was found 
+
+if result : 
+  print ("match found")
+else :
+print("match not found")
+
+print(" i love this coding\ " \" part")
+
+List
+-----
+
+l=["leo" , 10.2,57]
+l.extend(["the", 'man', 37]
+
+l.append(['pop,'10])
+
+
+
+Dictionaries
+-----------
+
+dell
+dic.values
+dic.keys
+ y in dic
+
+
+
+
+sets
+
+------
+
+no duplicate elements
+
+can pass a list to a set
+
+list ['a','b','c','d',a]
+
+s = set(list) # removes duplicates elements 
+
+s={'ere', 'kkf' , 'tr' }
+
+s.add('el') # to add an element
+s.remove('el")# to remove an element
+'a' in s # to check if element is in a set
+
+logical operations on sets 
+-------------------------
+
+
+a = set([1,2,3,4,5,6,7,8,9,10])
+
+b= set([1,2,4,5,8,9])
+
+
+inter =a&b # common elements
+
+a.difference(b) # the difference bwtn sets
+
+a.intersection(b) # # create a set of the intersection values
+a.union(b) # combines the 2 sets 
+
+a.issubset(b)
+
+a.issuperset(b)
+
+
+
+Classes
+---------
+
+
+#create a class
+class Circle(object):
+
+def __init__(self, radius=3,color='blue')
+self.radius=radius
+self.color=color
+
+#method defination
+
+def add_radius(self, r):
+self.radius =self.radius+r
+return (self.radius
+
+
+
+Text replace code
+---------------
+
+text=(" i love you, even thohgu sometimes you ? me for no reasons.")
+
+
+formated_text= text.replace('.','').replacr('!','').replace('?','').replace(',','')
+
+
+
+copying contentx from a file
+--------------------------
+r+ : Reading and writing. Cannot truncate the file.
+w+ : Writing and reading. Truncates the file.
+a+ : Appending and Reading. Creates a new file, if none exists. You dont have to dwell on the specifics of each mode for this lab.
+
+# Write the strings in the list to text file
+
+Lines = ["This is line A\n", "This is line B\n", "This is line C\n"]
+
+with open('/Example2.txt', 'w') as writefile:
+    for line in Lines:
+        print(line)
+        writefile.write(line)
+# Verify if writing to file is successfully executed
+
+with open('/Example2.txt', 'r') as testwritefile:
+    print(testwritefile.read())
+
+# Write a new line to text file
+
+with open('/Example2.txt', 'a') as testwritefile:
+    testwritefile.write("This is line C\n")
+    testwritefile.write("This is line D\n")
+    testwritefile.write("This is line E\n")
+ 
+
+
+
+
+Opening the file in w is akin to opening the .txt file, moving your cursor to the beginning of the text file, writing new text and deleting everything that follows. Whereas opening the file in a is similiar to opening the .txt file, moving your cursor to the very end and then adding the new pieces of text.
+It is often very useful to know where the 'cursor' is in a file and be able to control it. The following methods allow us to do precisely this -
+
+.tell() - returns the current position in bytes
+.seek(offset,from) - changes the position by 'offset' bytes with respect to 'from'. From can take the value of 0,1,2 corresponding to beginning, relative to current position and end
+
+
+with open('/Example2.txt', 'a+') as testwritefile:
+    print("Initial Location: {}".format(testwritefile.tell()))
+    
+    data = testwritefile.read()
+    if (not data):  #empty strings return false in python
+            print('Read nothing') 
+    else: 
+            print(testwritefile.read())
+            
+    testwritefile.seek(0,0) # move 0 bytes from beginning.
+    
+    print("\nNew Location : {}".format(testwritefile.tell()))
+    data = testwritefile.read()
+    if (not data): 
+            print('Read nothing') 
+    else: 
+            print(data)
+    
+    print("Location after read: {}".format(testwritefile.tell()) )
+
+
+Finally, a note on the difference between w+ and r+. Both of these modes allow access to read and write methods, however, opening a file in w+ overwrites it and deletes all pre-existing data.
+
+In the following code block, Run the code as it is first and then run it without the .truncate().
+
+
+with open('/Example2.txt', 'r+') as testwritefile:
+    testwritefile.seek(0,0) #write at beginning of file
+    testwritefile.write("Line 1" + "\n")
+    testwritefile.write("Line 2" + "\n")
+    testwritefile.write("Line 3" + "\n")
+    testwritefile.write("Line 4" + "\n")
+    testwritefile.write("finished\n")
+    testwritefile.seek(0,0)
+    print(testwritefile.read())
+
+
+
+
+
+Practice execirse
+-----------------
+Your local university's Raptors fan club maintains a register of its active members on a .txt document. Every month they update the file by removing the members who are not active. You have been tasked with automating this with your Python skills.
+Given the file currentMem, Remove each member with a 'no' in their Active column. Keep track of each of the removed members and append them to the exMem file. Make sure that the format of the original files in preserved. (Hint: Do this by reading/writing whole lines and ensuring the header remains )
+Run the code block below prior to starting the exercise. The skeleton code has been provided for you. Edit only the cleanFiles function. 
+
+#Run this prior to starting the exercise
+from random import randint as rnd
+
+memReg = '/members.txt'
+exReg = '/inactive.txt'
+fee =('yes','no')
+
+def genFiles(current,old):
+    with open(current,'w+') as writefile: 
+        writefile.write('Membership No  Date Joined  Active  \n')
+        data = "{:^13}  {:<11}  {:<6}\n"
+
+        for rowno in range(20):
+            date = str(rnd(2015,2020))+ '-' + str(rnd(1,12))+'-'+str(rnd(1,25))
+            writefile.write(data.format(rnd(10000,99999),date,fee[rnd(0,1)]))
+
+
+    with open(old,'w+') as writefile: 
+        writefile.write('Membership No  Date Joined  Active  \n')
+        data = "{:^13}  {:<11}  {:<6}\n"
+        for rowno in range(3):
+            date = str(rnd(2015,2020))+ '-' + str(rnd(1,12))+'-'+str(rnd(1,25))
+            writefile.write(data.format(rnd(10000,99999),date,fee[1]))
+
+
+genFiles(memReg,exReg)
+
+
+-------------------------
+Solution 
+-------
+def cleanFiles(currentMem,exMem):
+    with open(currentMem,'r+') as writeFile: 
+        with open(exMem,'a+') as appendFile:
+            #get the data
+            writeFile.seek(0)
+            members = writeFile.readlines()
+            #remove header
+            header = members[0]
+            members.pop(0)
+                
+            inactive = [member for member in members if ('no' in member)]
+            '''
+            The above is the same as 
+
+            for member in members:
+            if 'no' in member:
+                inactive.append(member)
+            '''
+            #go to the beginning of the write file
+            writeFile.seek(0) 
+            writeFile.write(header)
+            for member in members:
+                if (member in inactive):
+                    appendFile.write(member)
+                else:
+                    writeFile.write(member)      
+            writeFile.truncate()
+                
+memReg = 'members.txt'
+exReg = 'inactive.txt'
+cleanFiles(memReg,exReg)
+
+# code to help you see the files
+
+headers = "Membership No  Date Joined  Active  \n"
+
+with open(memReg,'r') as readFile:
+    print("Active Members: \n\n")
+    print(readFile.read())
+    
+with open(exReg,'r') as readFile:
+    print("Inactive Members: \n\n")
+    print(readFile.read())
+
+
+--------------------------------
+tests
+
+def testMsg(passed):
+    if passed:
+       return 'Test Passed'
+    else :
+       return 'Test Failed'
+
+testWrite = "/testWrite.txt"
+testAppend = "/testAppend.txt" 
+passed = True
+
+genFiles(testWrite,testAppend)
+
+with open(testWrite,'r') as file:
+    ogWrite = file.readlines()
+
+with open(testAppend,'r') as file:
+    ogAppend = file.readlines()
+
+try:
+    cleanFiles(testWrite,testAppend)
+except:
+    print('Error')
+
+with open(testWrite,'r') as file:
+    clWrite = file.readlines()
+
+with open(testAppend,'r') as file:
+    clAppend = file.readlines()
+        
+# checking if total no of rows is same, including headers
+
+if (len(ogWrite) + len(ogAppend) != len(clWrite) + len(clAppend)):
+    print("The number of rows do not add up. Make sure your final files have the same header and format.")
+    passed = False
+    
+for line in clWrite:
+    if  'no' in line:
+        passed = False
+        print("Inactive members in file")
+        break
+    else:
+        if line not in ogWrite:
+            print("Data in file does not match original file")
+            passed = False
+print ("{}".format(testMsg(passed)))
+    
+------------------------------
+
+
+Pandas Datafram
+-------
+
+#Define a dictionary 'x'
+
+x = {'Name': ['Rose','John', 'Jane', 'Mary'], 'ID': [1, 2, 3, 4], 'Department': ['Architect Group', 'Software Group', 'Design Team', 'Infrastructure'], 
+      'Salary':[100000, 80000, 50000, 60000]}
+
+#casting the dictionary to a DataFrame
+df = pd.DataFrame(x)
+
+#display the result df
+df
+
+#Retrieving the "ID" column and assigning it to a variable x
+x = df[['ID']]
+
+
+#Retrieving the Department, Salary and ID columns and assigning it to a variable z
+
+z = df[['Department','Salary','ID']]
+
+
+numpy arrays
+-----------
+
+np.linspace(-2, 2, num=5)
+
+# Write your code below and press Shift+Enter to execute
+
+u = np.array([1, 0])
+v = np.array([0, 1])
+print(u-v)
+
+
+
+-------------
+
+
+# Create the numpy array in radians
+
+x = np.array([0, np.pi/2 , np.pi])
+
+
+-------
+
+
+arr1 = np.array([3, 5])
+arr2 = np.array([2, 4])
+
+# Enter your code here
+print(np.dot(arr1,arr2))
+
+
+------------------
+
+import time 
+import sys
+import numpy as np 
+
+import matplotlib.pyplot as plt
+
+
+def Plotvec2(a,b):
+    ax = plt.axes()# to generate the full window axes
+    ax.arrow(0, 0, *a, head_width=0.05, color ='r', head_length=0.1)#Add an arrow to the  a Axes with arrow head width 0.05, color red and arrow head length 0.1
+    plt.text(*(a + 0.1), 'a')
+    ax.arrow(0, 0, *b, head_width=0.05, color ='b', head_length=0.1)#Add an arrow to the  b Axes with arrow head width 0.05, color blue and arrow head length 0.1
+    plt.text(*(b + 0.1), 'b')
+    plt.ylim(-2, 2)#set the ylim to bottom(-2), top(2)
+    plt.xlim(-2, 2)#set the xlim to left(-2), right(2)
+    
+# Write your code below and press Shift+Enter to execute
+a=np.array([-1,1])
+b=np.array([1,1])
+Plotvec2(a,b)
+
+
+------
+# Write your code below and press Shift+Enter to execute
+arr1=np.array([1,2,3,4,5])
+arry2 = np.array([6,7,8,9,10])
+even_a =arr1[1:5:2]
+even_b =arr2[0:5:2]
+even_b
+
+--------
+
+numpy 3 ds
+
+# Create a list
+
+a = [[11, 12, 13], [21, 22, 23], [31, 32, 33]]
+
+A = np.array(a)
+
+A.ndim
+A.shape
+A.size
+
+a
+
+--------------------
+
+
+matrix multiplication
+--------------------
+
+
+# Create a matrix A
+
+A = np.array([[0, 1, 1], [1, 0, 1]])
+A
+
+# Create a matrix B
+
+B = np.array([[1, 1], [1, 1], [-1, 1]])
+B
+
+# Calculate the dot product
+
+Z = np.dot(A,B)
+Z
+# Calculate the sine of Z
+
+np.sin(Z)
+
+# Create a matrix C
+
+C = np.array([[1,1],[2,2],[3,3]])
+C
+# Get the transposed of C
+
+C.T
+
+
+--------------------
+
+APIs 
+-----------
+!pip install nba_api
+
+from nba_api.stats.static import teams
+import matplotlib.pyplot as plt
+
+def one_dict(list_dict):
+    keys=list_dict[0].keys()
+    out_dict={key:[] for key in keys}
+    for dict_ in list_dict:
+        for key, value in dict_.items():
+            out_dict[key].append(value)
+    return out_dict
+
+
+dict_nba_team=one_dict(nba_teams)
+df_teams=pd.DataFrame(dict_nba_team)
+df_teams.head()
+
+
+df_warriors=df_teams[df_teams['nickname']=='Warriors']
+df_warriors
+
+id_warriors=df_warriors[['id']].values[0][0]
+# we now have an integer that can be used to request the Warriors information 
+id_warriors
+
+from nba_api.stats.endpoints import leaguegamefinder
+
+# Since https://stats.nba.com does not allow api calls from Cloud IPs and Skills Network Labs uses a Cloud IP.
+# The following code is commented out, you can run it on jupyter labs on your own computer.
+# gamefinder = leaguegamefinder.LeagueGameFinder(team_id_nullable=id_warriors)
+
+# Since https://stats.nba.com does not allow api calls from Cloud IPs and Skills Network Labs uses a Cloud IP.
+# The following code is commented out, you can run it on jupyter labs on your own computer.
+# gamefinder.get_json()
+
+
+# Since https://stats.nba.com does not allow api calls from Cloud IPs and Skills Network Labs uses a Cloud IP.
+# The following code is comment out, you can run it on jupyter labs on your own computer.
+# games = gamefinder.get_data_frames()[0]
+# games.head()
+
+
+----------------------------------------
+
+
+import requests
+
+filename = "https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/PY0101EN/Chapter%205/Labs/Golden_State.pkl"
+
+def download(url, filename):
+    response = requests.get(url)
+    if response.status_code == 200:
+        with open(filename, "wb") as f:
+            f.write(response.content)
+
+download(filename, "Golden_State.pkl")
+
+
+file_name = "Golden_State.pkl"
+games = pd.read_pickle(file_name)
+games.head()
+
+games_home=games[games['MATCHUP']=='GSW vs. TOR']
+games_away=games[games['MATCHUP']=='GSW @ TOR']
+
+
+
+games_home['PLUS_MINUS'].mean()
+games_away['PLUS_MINUS'].mean()
+
+fig, ax = plt.subplots()
+
+games_away.plot(x='GAME_DATE',y='PLUS_MINUS', ax=ax)
+games_home.plot(x='GAME_DATE',y='PLUS_MINUS', ax=ax)
+ax.legend(["away", "home"])
+plt.show()
+
+# Write your code below and press Shift+Enter to execute
+
+games_home['PTS'].mean()
+
+games_away['PTS'].mean()
+
+----------------------
+import requests
+
+import os 
+from PIL import Image
+from IPython.display import IFrame
+
+url='https://www.ibm.com/'
+r=requests.get(url)
+r.status_code
+
+print(r.request.headers)
+
+print("request body:", r.request.body)
+
+header=r.headers
+print(r.headers)
+
+header['date']
+header['Content-Type']
+r.encording
+
+r.text[0:100]
+
+
+------------------------
+
+
+# Use single quotation marks for defining string
+
+url='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/IDSNlogo.png'
+
+r=requests.get(url)
+print(r.headers)
+
+r.headers['Content-Type']
+
+path=os.path.join(os.getcwd(),'image.png')
+
+with open(path,'wb') as f:
+    f.write(r.content)
+
+Image.open(path)
+
+-------------------
+
+url_get='http://httpbin.org/get'
+
+payload={"name":"Joseph","ID":"123"}
+#Then passing the dictionary payload to the params parameter of the  get() function:
+
+r=requests.get(url_get,params=payload)
+# print the url
+r.url
+print(r.text)
+r.headers['Content-Type']
+
+#As the content 'Content-Type' is in the JSON format we can use the method json(), it returns a Python dict:
+r.json()
+
+r.json()['args']
+
+
+--------------------
+
+POST Request
+------------
+url_post='http://httpbin.org/post'
+
+#To make a POST request we use the post() function, the variable payload is passed to the parameter  data :
+
+r_post=requests.post(url_post,data=payload)
+print("POST request URL:",r_post.url )
+print("GET request URL:",r.url)
+
+
+# comparing request bodies 
+
+print("POST request body:",r_post.request.body)
+print("GET request body:",r.request.body)
+
+
+r_post.json()['form']
+------------------------------
+
+For more information on requests
+
+https://requests.readthedocs.io/en/latest/?utm_content=000026UJ&utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkPY0101ENSkillsNetwork19487395-2021-01-01&utm_medium=Exinfluencer&utm_source=Exinfluencer&utm_term=10006555
+
+
+
+__________________________
+
+Web scraping 
+
+---------------
+!pip install html5lib
+# !pip install requests
+!pip install bs4
+from bs4 import BeautifulSoup # this module helps in web scrapping.
+import requests  # this module helps us to download a web page
+
+%%html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<h3><b id='boldest'>Lebron James</b></h3>
+<p> Salary: $ 92,000,000 </p>
+<h3> Stephen Curry</h3>
+<p> Salary: $85,000, 000 </p>
+<h3> Kevin Durant </h3>
+<p> Salary: $73,200, 000</p>
+</body>
+</html>
+
+
+html = "<!DOCTYPE html><html><head><title>Page Title</title></head><body><h3> \
+<b id='boldest'>Lebron James</b></h3><p> Salary: $ 92,000,000 </p> \
+<h3>Stephen Curry</h3><p> Salary: $85,000,000</p> \
+<h3>Kevin Durant</h3><p> Salary: $73,200,000</p></body></html>"
+
+
+
+soup = BeautifulSoup(html, 'html5lib')
+
+print(soup.prettify())
+
+
+tag_object = soup.title
+print("tag object:", tag_object)
+
+print("tag object type:", type(tag_object))
+
+
+tag_object = soup.h3
+tag_object
+
+
+Children, Parents and Siblings
+-----------------------------
+
+tag_child = tag_object.b
+tag_child
+
+parent_tag = tag_child.parent
+parent_tag
+
+tag_object
+
+sibling_1 = tag_object.next_sibling
+sibling_1
+
+
+sibling_2 = sibling_1.next_sibling
+sibling_2
+
+---------------------------
+
+HTML Attributes
+--------------
+
+tag_child['id']
+
+tag_child.attrs
+
+tag_child.get('id')
+
+
+#navigable string
+tag_string = tag_child.string
+tag_string
+
+type(tag_string)
+
+----------------
+
+Filter
+------
+%%html
+<table>
+  <tr>
+    <td id='flight' >Flight No</td>
+    <td>Launch site</td> 
+    <td>Payload mass</td>
+   </tr>
+  <tr> 
+    <td>1</td>
+    <td><a href='https://en.wikipedia.org/wiki/Florida'>Florida</a></td>
+    <td>300 kg</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><a href='https://en.wikipedia.org/wiki/Texas'>Texas</a></td>
+    <td>94 kg</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><a href='https://en.wikipedia.org/wiki/Florida'>Florida<a> </td>
+    <td>80 kg</td>
+  </tr>
+</table>
+
+# store in a sting variable 
+table = "<table><tr><td id='flight'>Flight No</td><td>Launch site</td> \
+<td>Payload mass</td></tr><tr> <td>1</td> \
+<td><a href='https://en.wikipedia.org/wiki/Florida'>Florida<a></td> \
+<td>300 kg</td></tr><tr><td>2</td> \
+<td><a href='https://en.wikipedia.org/wiki/Texas'>Texas</a></td> \
+<td>94 kg</td></tr><tr><td>3</td> \
+<td><a href='https://en.wikipedia.org/wiki/Florida'>Florida<a> </td> \
+<td>80 kg</td></tr></table>"
+
+
+table_bs = BeautifulSoup(table, 'html5lib')
+
+
+# findAll
+# Method signature
+#The Method signature for <code>find_all(name, attrs, recursive, string, limit, **kwargs)<c/ode>
+
+
+table_rows = table_bs.find_all('tr')
+table_rows
+
+first_row = table_rows[0]
+first_row
+
+
+print(type(first_row))
+
+first_row.td
+
+# iterate through the list, each element correspond to a row in a table 
+for i, row in enumerate(table_rows):
+    print("row", i, "is", row)
+
+for i, row in enumerate(table_rows):
+    print("row", i)
+    cells = row.find_all('td')
+    for j, cell in enumerate(cells):
+        print('colunm', j, "cell", cell)
+
+list_input = table_bs.find_all(name=["tr", "td"])
+list_input
+
+
+----------------------------
+
+Attributes
+-------------
+
+table_bs.find_all(id="flight")
+
+
+list_input = table_bs.find_all(href="https://en.wikipedia.org/wiki/Florida")
+list_input
+
+
+table_bs.find_all('a', href=True)
+
+
+# find all 
+table_bs.find_all('a', href=False)
+
+soup.find_all(id="boldest")
+
+# Find 
+
+%%html
+<h3>Rocket Launch </h3>
+
+<p>
+<table class='rocket'>
+  <tr>
+    <td>Flight No</td>
+    <td>Launch site</td> 
+    <td>Payload mass</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Florida</td>
+    <td>300 kg</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Texas</td>
+    <td>94 kg</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Florida </td>
+    <td>80 kg</td>
+  </tr>
+</table>
+</p>
+<p>
+
+<h3>Pizza Party</h3>
+  
+    
+<table class='pizza'>
+  <tr>
+    <td>Pizza Place</td>
+    <td>Orders</td> 
+    <td>Slices </td>
+   </tr>
+  <tr>
+    <td>Domino's Pizza</td>
+    <td>10</td>
+    <td>100</td>
+  </tr>
+  <tr>
+    <td>Little Caesars</td>
+    <td>12</td>
+    <td >144 </td>
+  </tr>
+  <tr>
+    <td>Papa John's </td>
+    <td>15 </td>
+    <td>165</td>
+  </tr>
+
+
+two_tables="<h3>Rocket Launch </h3> \
+<p><table class='rocket'> \
+<tr><td>Flight No</td><td>Launch site</td><td>Payload mass</td></tr> \
+<tr><td>1</td><td>Florida</td><td>300 kg</td></tr> \
+<tr><td>2</td><td>Texas</td><td>94 kg</td></tr> \
+<tr><td>3</td><td>Florida </td><td>80 kg</td></tr></table></p>\
+<p><h3>Pizza Party</h3> \
+<table class='pizza'> \
+<tr><td>Pizza Place</td><td>Orders</td><td>Slices </td></tr> \
+<tr><td>Domino's Pizza</td><td>10</td><td>100</td></tr> \
+<tr><td>Little Caesars</td><td>12</td><td >144 </td></tr> \
+<tr><td>Papa John's</td><td>15 </td><td>165</td></tr>"
+
+
+
+two_tables_bs = BeautifulSoup(two_tables, 'html.parser')
+
+two_tables_bs.find("table")
+
+
+----------------------------------------
+Downloading And Scraping The Contents Of A Web Page
+--------------------------------------
+
+
+url = "http://www.ibm.com"
+
+data = requests.get(url).text
+
+soup = BeautifulSoup(data, "html5lib")  # create a soup object using the variable 'data'
+
+
+for link in soup.find_all('a', href=True):  # in html anchor/link is represented by the tag <a>
+    print(link.get('href'))
+
+
+------------------------
+Scraping all image tags
+-------------------------
+for link in soup.find_all('img'):  # in html image is represented by the tag <img>
+    print(link)
+    print(link.get('src'))
+
+---------------------------
+Scrape data from HTML tables
+-------------------------
+
+# The below url contains an html table with data about colors and color codes.
+url = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DA0321EN-SkillsNetwork/labs/datasets/HTMLColorCodes.html"
+
+# get the contents of the webpage in text format and store in a variable called data
+data = requests.get(url).text
+
+soup = BeautifulSoup(data, "html5lib")
+
+# find a html table in the web page
+table = soup.find('table')  # in html table is represented by the tag <table>
+
+# Get all rows from the table
+for row in table.find_all('tr'):  # in html table row represented by tag <tr>
+    # Get all columns in each row.
+    cols = row.find_all('td')  # in html a column is represented by tag <td>
+    color_name = cols[2].string  # store the value in column 3 as color_name
+    color_code = cols[3].text  # store the value in column 4 as color_code
+    print("{}--->{}".format(color_name, color_code))
+
+
+---------------------------------
+
+Scrape tables using pands on a web page
+---------------------------------------
+# The below url contains an html table with data about colors and color codes.
+url = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DA0321EN-SkillsNetwork/labs/datasets/HTMLColorCodes.html"
+
+
+import pandas as pd
+
+tables = pd.read_html(url)
+tables
+
+
+tables[0]
+
+
+
+--------------------------------
+API
+-----------------
+
+
+!pip install randomuser
+
+
+from randomuser import RandomUser
+import pandas as pd
+
+
+r = RandomUser()
+
+
+some_list = r.generate_users(10)
+
+some_list
+
+name = r.get_full_name()
+
+for user in some_list:
+    print (user.get_full_name()," ",user.get_email())
+
+
+
+## Write your code here
+some_list = r.generate_users(10)
+
+for user in some_list:
+    print (user.get_full_name()," ",user.get_picture())
+
+def get_users():
+    users =[]
+     
+    for user in RandomUser.generate_users(10):
+        users.append({"Name":user.get_full_name(),"Gender":user.get_gender(),"City":user.get_city(),"State":user.get_state(),"Email":user.get_email(), "DOB":user.get_dob(),"Picture":user.get_picture()})
+      
+    return pd.DataFrame(users)     
+
+
+df1 = pd.DataFrame(get_users())  
+
+----------------------
+Example 1
+------------
+
+import requests
+import json
+
+data = requests.get("https://fruityvice.com/api/fruit/all")
+
+results = json.loads(data.text)
+
+
+pd.DataFrame(results)
+
+
+
+df2 = pd.json_normalize(results)
+
+
+cherry = df2.loc[df2["name"] == 'Cherry']
+(cherry.iloc[0]['family']) , (cherry.iloc[0]['genus'])
+
+
+------------------
+Example 2
+-------------
+
+# Write your code here
+cal_banana = df2.loc[df2["name"] == 'Banana']
+cal_banana.iloc[0]['nutritions.calories']
+
+
+-------------------------------------
+
+Data Engineering Process
+---------------------------
+
+
+
+File formats
+------------
+
+CSV
+---------
+
+import piplite
+await piplite.install(['seaborn', 'lxml', 'openpyxl'])
+
+import pandas as pd
+
+
+from pyodide.http import pyfetch
+
+filename = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/addresses.csv"
+
+async def download(url, filename):
+    response = await pyfetch(url)
+    if response.status == 200:
+        with open(filename, "wb") as f:
+            f.write(await response.bytes())
+
+await download(filename, "addresses.csv")
+
+df = pd.read_csv("addresses.csv", header=None)
+
+
+df
+
+
+#add column names 
+df.columns =['First Name', 'Last Name', 'Location ', 'City','State','Area Code']
+
+#select single coolumn
+df["First Name"]
+
+#Selecting multiple columns
+df = df[['First Name', 'Last Name', 'Location ', 'City','State','Area Code']]
+df
+
+# Selecting rows using .iloc and .loc
+# To select the first row
+df.loc[0]
+
+# To select the 0th,1st and 2nd row of "First Name" column only
+df.loc[[0,1,2], "First Name" ]
+
+# To select the 0th,1st and 2nd row of "First Name" column only
+df.iloc[[0,1,2], 0]
+
+-------------------------------
+Transformation functions in pands 
+-----------------------------
+
+#import library
+import pandas as pd
+import numpy as np
+
+#creating a dataframe
+df=pd.DataFrame(np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), columns=['a', 'b', 'c'])
+df
+
+#applying the transform function
+df = df.transform(func = lambda x : x + 10)
+df
+
+
+result = df.transform(func = ['sqrt'])
+
+
+result
+
+-----------------------
+JSON file Format
+----------------
+
+import json
+
+#Writing JSON to a File
+
+#This is usually called serialization. It is the process of converting an object into a special format which is suitable for transmitting over the network or storing in file or database.
+
+#To handle the data flow in a file, the JSON library in Python uses the dump() or dumps() function to convert the Python objects into their respective JSON object. This makes it easy to write data to files.
+
+import json
+person = {
+    'first_name' : 'Mark',
+    'last_name' : 'abc',
+    'age' : 27,
+    'address': {
+        "streetAddress": "21 2nd Street",
+        "city": "New York",
+        "state": "NY",
+        "postalCode": "10021-3100"
+    }
+}
+
+
+# Serializing json  
+json_object = json.dumps(person, indent = 4) 
+  
+# Writing to sample.json 
+with open("sample.json", "w") as outfile: 
+    outfile.write(json_object) 
+
+
+print(json_object)
+
+
+#Reading JSON to a File
+
+import json 
+  
+# Opening JSON file 
+with open('sample.json', 'r') as openfile: 
+  
+    # Reading from json file 
+    json_object = json.load(openfile) 
+  
+print(json_object) 
+print(type(json_object)) 
+
+
+
+-----------------------------------
+XLSX file format
+-------------------------------------
+# Reading the data from XLSX file
+
+
+import pandas as pd
+
+# Not needed unless you're running locally
+# import urllib.request
+# urllib.request.urlretrieve("https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/file_example_XLSX_10.xlsx", "sample.xlsx")
+
+filename = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/file_example_XLSX_10.xlsx"
+
+async def download(url, filename):
+    response = await pyfetch(url)
+    if response.status == 200:
+        with open(filename, "wb") as f:
+            f.write(await response.bytes())
+
+await download(filename, "file_example_XLSX_10.xlsx")
+
+df = pd.read_excel("file_example_XLSX_10.xlsx")
+df
+
+
+--------------------------
+XML file format
+----------------------
+
+import xml.etree.ElementTree as ET
+
+#Writing with xml.etree.ElementTree
+--------------------------------
+# create the file structure
+employee = ET.Element('employee')
+details = ET.SubElement(employee, 'details')
+first = ET.SubElement(details, 'firstname')
+second = ET.SubElement(details, 'lastname')
+third = ET.SubElement(details, 'age')
+first.text = 'Shiv'
+second.text = 'Mishra'
+third.text = '23'
+
+# create a new XML file with the results
+mydata1 = ET.ElementTree(employee)
+# myfile = open("items2.xml", "wb")
+# myfile.write(mydata)
+with open("new_sample.xml", "wb") as files:
+    mydata1.write(files)
+
+
+#Reading with xml.etree.ElementTree
+------------------------------------
+# Not needed unless running locally
+# !wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/Sample-employee-XML-file.xml
+
+import xml.etree.ElementTree as etree
+
+filename = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/Sample-employee-XML-file.xml"
+
+async def download(url, filename):
+    response = await pyfetch(url)
+    if response.status == 200:
+        with open(filename, "wb") as f:
+            f.write(await response.bytes())
+
+await download(filename, "Sample-employee-XML-file.xml")
+
+
+
+tree = etree.parse("Sample-employee-XML-file.xml")
+
+root = tree.getroot()
+columns = ["firstname", "lastname", "title", "division", "building","room"]
+
+datatframe = pd.DataFrame(columns = columns)
+
+for node in root: 
+
+    firstname = node.find("firstname").text
+
+    lastname = node.find("lastname").text 
+
+    title = node.find("title").text 
+    
+    division = node.find("division").text 
+    
+    building = node.find("building").text
+    
+    room = node.find("room").text
+    
+    datatframe = pd.concat([datatframe, pd.Series([firstname, lastname, title, division, building, room], index = columns)], ignore_index = True)
+
+dataframe
+
+
+Reading and saving
+------------------
+
+# Herein xpath we mention the set of xml nodes to be considered for migrating  to the dataframe which in this case is details node under employees.
+df=pd.read_xml("Sample-employee-XML-file.xml", xpath="/employees/details") 
+
+datatframe.to_csv("employee.csv", index=False)
+
+
+---------------------------
+Binary File Format
+--------------------
+#Reading the Image file
+-------------------------
+#PIL is the Python Imaging Library which provides the python interpreter with image editing capabilities.
+
+# importing PIL 
+from PIL import Image 
+
+# Uncomment if running locally
+# import urllib.request
+# urllib.request.urlretrieve("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg", "dog.jpg")
+
+filename = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg"
+
+async def download(url, filename):
+    response = await pyfetch(url)
+    if response.status == 200:
+        with open(filename, "wb") as f:
+            f.write(await response.bytes())
+
+await download(filename, "./dog.jpg")
+
+# Read image 
+img = Image.open('./dog.jpg','r') 
+  
+# Output Images 
+img.show()
+
+---------------------------
+Data Analysis
+------------------
+
+# Import pandas library
+import pandas as pd
+
+filename = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/diabetes.csv"
+
+async def download(url, filename):
+    response = await pyfetch(url)
+    if response.status == 200:
+        with open(filename, "wb") as f:
+            f.write(await response.bytes())
+
+await download(filename, "diabetes.csv")
+df = pd.read_csv("diabetes.csv")
+
+# show the first 5 rows using dataframe.head() method
+print("The first 5 rows of the dataframe") 
+df.head(5)
+
+
+df.shape
+
+df.info()
+
+df.describe()
+
+
+missing_data = df.isnull()
+missing_data.head(5)
+
+#Count missing values in each column
+
+for column in missing_data.columns.values.tolist():
+    print(column)
+    print (missing_data[column].value_counts())
+    print("")    
+
+
+#Correct data format
+# .dtype() to check the data type
+#.astype() to change the data type
+
+df.dtypes
+
+
+#Visualization
+
+# import libraries
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+labels= 'Not Diabetic','Diabetic'
+plt.pie(df['Outcome'].value_counts(),labels=labels,autopct='%0.02f%%')
+plt.legend()
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
