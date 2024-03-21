@@ -1,0 +1,30 @@
+2024-Mar-20-09:39:30 : Preliminaries complete. Initiating ETL process
+2024-Mar-20-09:39:36 : Data extraction complete. Initiating Transformation process
+2024-Mar-20-09:39:36 : Data transformation complete. Initiating loading process
+2024-Mar-20-09:39:36 : Data saved to CSV file
+2024-Mar-20-09:39:36 : SQL Connection initiated.
+2024-Mar-20-09:39:36 : Data loaded to Database as table. Running the query
+2024-Mar-20-09:39:36 : Running the query for all 
+2024-Mar-20-09:39:36 :  Running the avarage query
+2024-Mar-20-09:39:36 :  Running the name  query
+2024-Mar-20-09:39:36 : Process Complete.
+2024-Mar-20-09:41:09 : Preliminaries complete. Initiating ETL process
+2024-Mar-20-09:41:10 : Data extraction complete. Initiating Transformation process
+2024-Mar-20-09:41:10 : Data transformation complete. Initiating loading process
+2024-Mar-20-09:41:10 : Data saved to CSV file
+2024-Mar-20-09:41:10 : SQL Connection initiated.
+2024-Mar-20-09:41:11 : Data loaded to Database as table. Running the query
+2024-Mar-20-09:41:11 : Running the query for all 
+2024-Mar-20-09:41:11 :  Running the avarage query
+2024-Mar-20-09:41:11 :  Running the name  query
+2024-Mar-20-09:41:11 : Process Complete.
+2024-Mar-20-16:36:17 : Preliminaries complete. Initiating ETL process
+2024-Mar-20-16:36:23 : Data extraction complete. Initiating Transformation process
+2024-Mar-20-16:36:23 : Data transformation complete. Initiating loading process
+2024-Mar-20-16:36:23 : Data saved to CSV file
+2024-Mar-20-16:36:23 : SQL Connection initiated.
+2024-Mar-20-16:36:23 : Data loaded to Database as table. Running the query
+2024-Mar-20-16:36:23 : Running the query for all 
+2024-Mar-20-16:36:23 :  Running the avarage query
+2024-Mar-20-16:36:23 :  Running the name  query
+2024-Mar-20-16:36:23 : Process Complete.
